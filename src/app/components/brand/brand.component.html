@@ -1,0 +1,15 @@
+  
+<div class="col-md-6">
+  <table class="table table-success table-striped">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Marka</th>
+          </tr>
+      </thead>
+      <tr *ngFor="let brand of brands">
+          <td>{{brand.id}}</td>
+          <td>{{brand.name}}</td>
+      </tr>
+  </table>
+</div>

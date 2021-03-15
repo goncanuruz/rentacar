@@ -1,0 +1,14 @@
+<div class="col-md-6">
+  <table class="table table-success table-striped">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Color</th>
+          </tr>
+      </thead>
+      <tr *ngFor="let color of colors">
+          <td>{{color.id}}</td>
+          <td>{{color.name}}</td>
+      </tr>
+  </table>
+</div>
