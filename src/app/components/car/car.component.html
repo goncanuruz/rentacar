@@ -3,13 +3,13 @@
   <div *ngFor="let car of cars " class="card text-dark bg-light mb-3" style="max-width: 18rem;">
     <img src="{{urlPath}}/{{car.imagePath}}" class="card-img-top" alt="...">
     <div  class="card-body">
-      <h5 class="card-title">{{car.carName}}</h5>
+      <h5 class="card-title">{{car.brandName}}</h5>
     </div >
     <ul class="list-group">
       <li class="list-group-item list-group-item-dark">#{{car.id}}</li>
-      <li class="list-group-item list-group-item-dark">Marka: {{car.brandName}}</li>
-      <li class="list-group-item list-group-item-dark">Renk: {{car.colorName}} </li>
-      <li class="list-group-item list-group-item-dark">Fiyat: {{car.dailyPrice}} ₺</li>
+      <li class="list-group-item list-group-item-dark">Brand: {{car.carName}}</li>
+      <li class="list-group-item list-group-item-dark">Color: {{car.colorName}} </li>
+      <li class="list-group-item list-group-item-dark">Daily Price: {{car.dailyPrice}} ₺</li>
     </ul>
     <div class="card-body">
       <button routerLink="/cars/car/{{car.id}}" type="button" class="btn btn-secondary">Details</button>

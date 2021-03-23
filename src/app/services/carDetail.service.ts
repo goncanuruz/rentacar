@@ -16,8 +16,13 @@ export class CarDetailService {
     let newPath=this.apiUrl+"cars/getcardetails"
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
   }
-  getCarImages():Observable<ListResponseModel<CarImage>>{
-    let newPath=this.apiUrl+"carimages/getall"
+  getCarImages(carId:number):Observable<ListResponseModel<CarImage>>{
+    let newPath=this.apiUrl+"carimages/getcarimages?carId="+carId
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath)
   }
+  getDetailsByCarId(carId:number):Observable<ListResponseModel<CarDetailDto>>{
+    let newPath=this.apiUrl+"cars/getdetailsbycarid?id="+carId
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
+  }
+
 }

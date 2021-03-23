@@ -1,16 +1,30 @@
-<div *ngFor class="card" style="width: 18rem;">
-    <img class="card-img-top" src="" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
+<div class="row" >
+  <div *ngFor="let image of carImages " class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <img src="{{urlPath}}/{{image.imagePath}}" class="card-img-top" alt="...">
+</div>
+<div style="text-align: center" aria-current="true" *ngIf="car">
+  <h4>
+    {{ car.carName }}
+  </h4>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Brand</th>
+      <th>Color</th>
+      <th>Model Year</th>
+      <th>Daily Price</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tr *ngIf="car">
+    <td>{{ car.id }}</td>
+    <td>{{ car.brandName }}</td>
+    <td>{{ car.colorName }}</td>
+    <td>{{ car.modelYear }}</td>
+    <td>{{ car.dailyPrice }}</td>
+    <td>{{ car.description }}</td>
+    <button type="button" class="btn btn-secondary">Rent</button>
+  </tr>
+</table>
