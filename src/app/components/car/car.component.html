@@ -1,18 +1,18 @@
 
-<table class="table table-success table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Car Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Model Year</th>
-        <th scope="col">Daily Price</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let car of cars">
-        <td>{{car.name}}</td>
-        <td>{{car.description}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
-    </tr>
-   
-  </table>
+<div class="row" >
+  <div *ngFor="let car of cars " class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <img src="{{urlPath}}/{{car.imagePath}}" class="card-img-top" alt="...">
+    <div  class="card-body">
+      <h5 class="card-title">{{car.carName}}</h5>
+    </div >
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-dark">#{{car.id}}</li>
+      <li class="list-group-item list-group-item-dark">Marka: {{car.brandName}}</li>
+      <li class="list-group-item list-group-item-dark">Renk: {{car.colorName}} </li>
+      <li class="list-group-item list-group-item-dark">Fiyat: {{car.dailyPrice}} ₺</li>
+    </ul>
+    <div class="card-body">
+      <button routerLink="/cars/car/{{car.id}}" type="button" class="btn btn-secondary">Details</button>
+    </div>
+  </div>
+</div>

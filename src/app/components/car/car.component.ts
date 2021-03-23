@@ -10,14 +10,19 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-  cars:Car[]=[];
+  cars:CarDetailDto[]=[];
+  currentCar:CarDetailDto;
+  urlPath:string="https://localhost:44398/images"
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
       this.activatedRoute.params.subscribe(params=>{
         if(params["brandId"]){
           this.getCarsByBrand(params["brandId"])
-        }else{
+        }else if(params["colorId"]){
+          this.getCarsByColor(params["colorId"])
+        }
+        else{
           this.getCars()
         }
       });
@@ -32,5 +37,20 @@ export class CarComponent implements OnInit {
     this.carService.getCarsByBrand(brandId).subscribe(response=>{
       this.cars=response.data
     })
+  }
+  getCarsByColor(colorId:number){
+    this.carService.getCarsByColor(colorId).subscribe(response=>{
+      this.cars=response.data
+    })
+  }
+  setCurrentCar(car:CarDetailDto){
+    this.currentCar=car;
+  }
+  getCurrentCarClass(car:CarDetailDto){
+    if(car==this.currentCar){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
   }
 }
