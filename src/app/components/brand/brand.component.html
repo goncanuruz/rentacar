@@ -1,4 +1,4 @@
-<ul class="list-group">
+<!-- <ul class="list-group">
 
   <li  [class]="getAllBrandClass()" routerLink = "/cars">Tüm Markalar</li>
   <li class="list-group-item list-group-item-dark"><b>Brand Name</b> </li>
@@ -7,5 +7,18 @@
   [class]="getCurrentBrandClass(brand)">
   {{brand.name}}</li>
 </ul>
-
 <h5 *ngIf="currentBrand">{{currentBrand.name}} seçtiniz</h5>
+
+ -->
+ <table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Marka</th>
+    </tr>
+  </thead>   
+  <tr *ngFor="let brand of brands">
+      <td >{{brand.id}}</td>
+      <td>{{brand.name}}</td>
+  </tr>
+</table>

@@ -13,18 +13,26 @@ export class CarComponent implements OnInit {
   cars:CarDetailDto[]=[];
   currentCar:CarDetailDto;
   urlPath:string="https://localhost:44398/images"
+  filterText="";
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
       this.activatedRoute.params.subscribe(params=>{
-        if(params["brandId"]){
-          this.getCarsByBrand(params["brandId"])
-        }else if(params["colorId"]){
-          this.getCarsByColor(params["colorId"])
-        }
-        else{
-          this.getCars()
-        }
+        if(params["brandId"] && params["colorId"])
+      {
+        this.getCarsFilter(params["brandId"],params["colorId"])
+      }
+      else if(params["brandId"])
+      {
+        this.getCarsByBrand(params["brandId"])
+      }
+      else if(params["colorId"])
+      {
+        this.getCarsByColor(params["colorId"])
+      }     
+      else{
+        this.getCars();
+      }
       });
   }
 
@@ -33,6 +41,10 @@ export class CarComponent implements OnInit {
       this.cars=response.data
     })
   }
+  getCarsFilter(brandId:number,colorId:number) {
+    this.carService.getCarsByFilter(brandId,colorId).subscribe((response) => {
+      this.cars = response.data;
+    });}
   getCarsByBrand(brandId:number){
     this.carService.getCarsByBrand(brandId).subscribe(response=>{
       this.cars=response.data
@@ -53,4 +65,5 @@ export class CarComponent implements OnInit {
       return "list-group-item"
     }
   }
+
 }

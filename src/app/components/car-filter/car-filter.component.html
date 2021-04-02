@@ -1,0 +1,40 @@
+
+    <div class="card bg-light mb-3" style="max-width: 15rem">
+      <div class="card-header">Markalar</div>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="currentBrand"
+      >
+        <option class="option" value="undefined" >Bir marka seçiniz</option>
+        <option *ngFor="let brand of brands" [ngValue]="brand" class="option">
+          {{ brand.name }}
+        </option>
+      </select>
+    </div>
+    <div class="card bg-light mb-3" style="max-width: 15rem">
+      <div class="card-header">Renkler</div>
+      <select
+        [(ngModel)]="currentColor"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option class="option" value="undefined">Bir renk seçiniz</option>
+        <option *ngFor="let color of colors" [ngValue]="color" class="option">
+          {{ color.name }}
+        </option>
+      </select>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md">
+    <button
+      [routerLink]="getRouterLink()"
+      type="button"
+      class="btn btn-success btn-sm"
+    >
+      Filtrele
+    </button>
+    <button routerLink="/cars" type="button" class="btn btn-success btn-sm">
+      Temizle
+    </button>
+    </div>
+

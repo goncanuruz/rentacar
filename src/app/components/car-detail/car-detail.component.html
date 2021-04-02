@@ -1,6 +1,8 @@
+
+
 <div class="row" >
   <div *ngFor="let image of carImages " class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-    <img src="{{urlPath}}/{{image.imagePath}}" class="card-img-top" alt="...">
+    <img src="{{urlPath}}/{{image.imagePath}}" class="card-img" alt="...">
 </div>
 <div style="text-align: center" aria-current="true" *ngIf="car">
   <h4>
@@ -23,8 +25,8 @@
     <td>{{ car.brandName }}</td>
     <td>{{ car.colorName }}</td>
     <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
+    <td>{{ car.dailyPrice }} ₺</td>
     <td>{{ car.description }}</td>
-    <button type="button" class="btn btn-secondary">Rent</button>
+    <button type="button" class="btn btn-success ">Rent</button>
   </tr>
 </table>

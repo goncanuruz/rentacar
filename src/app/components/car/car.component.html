@@ -1,18 +1,67 @@
 
-<div class="row" >
-  <div *ngFor="let car of cars " class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-    <img src="{{urlPath}}/{{car.imagePath}}" class="card-img-top" alt="...">
-    <div  class="card-body">
-      <h5 class="card-title">{{car.brandName}}</h5>
-    </div >
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-dark">#{{car.id}}</li>
-      <li class="list-group-item list-group-item-dark">Brand: {{car.carName}}</li>
-      <li class="list-group-item list-group-item-dark">Color: {{car.colorName}} </li>
-      <li class="list-group-item list-group-item-dark">Daily Price: {{car.dailyPrice}} ₺</li>
-    </ul>
-    <div class="card-body">
-      <button routerLink="/cars/car/{{car.id}}" type="button" class="btn btn-secondary">Details</button>
+  <div class="card bg-light mb-3">
+  <div class="card-header">
+    <label for="filterText" class="form-label">Arama</label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Model adına göre ara"
+    /></div>  
+
+<div *ngIf="filterText.length"class="alert alert-success">{{filterText}} aradınız</div>
+
+
+
+<div class="card" style="max-width: 720px; ">
+  <div *ngFor="let car of cars | carFilterPipe:filterText" class="row ">
+
+    <div class="col-md-3 ">
+      <img src="{{urlPath}}/{{car.imagePath}}" class="card-img" alt="...">
+    </div>
+
+    <div class="col-md-9">
+      <div class="card-body">
+        <div class="card-header"><b>{{car.carName}}</b></div>
+
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col row">#</th>
+        <th scope="col row">Marka</th>
+        <th scope="col row">Renk</th>
+        <th scope="col row">Ücret</th>
+      </tr>
+    </thead>  
+    <tr>
+        <td >{{car.id}}</td>
+        <td >{{car.brandName}}</td>
+        <td >{{car.colorName}}</td>
+        <td >{{car.dailyPrice}} ₺</td>
+        <button routerLink="/cars/car/{{car.id}}" type="button" class="btn btn-success btn-sm">Detaylar</button>
+    </tr>
+  </table>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="row" >
+  <div *ngFor="let car of cars " class="card text-dark bg-light mb-3" style="max-width: 23rem;">
+    <img src="{{urlPath}}/{{car.imagePath}}" class="card-img-top" alt="...">
+    <div  class="card-body">
+      <h5 class="card-title">{{car.carName}}</h5>
+    </div >
+    <ul class="list-group">
+      <li class="list-group-item ">#{{car.id}}</li>
+      <li class="list-group-item ">Brand: {{car.brandName}}</li>
+      <li class="list-group-item ">Color: {{car.colorName}} </li>
+      <li class="list-group-item ">Daily Price: {{car.dailyPrice}} ₺</li>
+    </ul>
+    <div class="card-body">
+      <button routerLink="/cars/car/{{car.id}}" type="button" class="btn btn-success btn-sm">Details</button>
+    </div>
+  </div>
+</div>
+ -->
